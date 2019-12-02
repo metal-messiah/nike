@@ -1,3 +1,4 @@
+// reducer actions
 export enum ActionType {
   UPDATE_FIRST_NAME,
   UPDATE_LAST_NAME,

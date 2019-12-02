@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Component from './header';
-
 const f = jest.fn;
 
 it('renders without crashing', () => {

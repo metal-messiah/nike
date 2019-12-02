@@ -8,6 +8,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import appReducer from './reducers/app-reducer';
 
+// redux store
 const store: any = createStore(appReducer);
 
 ReactDOM.render(

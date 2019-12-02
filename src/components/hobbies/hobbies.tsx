@@ -7,6 +7,9 @@ import './hobbies.scss';
 
 // interfaces
 import { IState } from '../../interfaces/state';
+interface Props {
+  setSnackBar: Function;
+}
 
 // enums
 import { ActionType } from '../../enums/action-type';
@@ -23,7 +26,7 @@ function getSize() {
   };
 }
 
-const HobbiesComponent: React.FC<{ setSnackBar: Function }> = props => {
+const HobbiesComponent: React.FC<Props> = props => {
   // redux state
   const { firstName, lastName, hobbies } = useSelector((state: IState) => state);
   const dispatch = useDispatch();
@@ -69,26 +72,26 @@ const HobbiesComponent: React.FC<{ setSnackBar: Function }> = props => {
   }, []); // Empty array ensures that effect is only run on mount and unmount
 
   return hobbies.length ? (
-    <div className="container">
-      <div className="toolbar">
-        <div className="user-name">
+    <div className='container'>
+      <div className='toolbar'>
+        <div className='user-name'>
           {firstName} {lastName}
         </div>
         <Tooltip
-          title="Clear All Hobbies"
-          placement="bottom"
+          title='Clear All Hobbies'
+          placement='bottom'
           onClick={() => dispatch({ type: ActionType.CLEAR_HOBBIES, payload: null })}
         >
-          <button id="clear-all" type="button">
-            <i className="fas fa-trash" />
+          <button id='clear-all' type='button'>
+            <i className='fas fa-trash' />
           </button>
         </Tooltip>
       </div>
-      <GridList cellHeight={300} spacing={1} className="grid-list" cols={windowSize.width > 720 ? 3 : 1}>
+      <GridList cellHeight={300} spacing={1} className='grid-list' cols={windowSize.width > 720 ? 3 : 1}>
         {hobbies.map((hobby, i) => (
-          <GridListTile className="tile" key={i} cols={getCols(i)}>
+          <GridListTile className='tile' key={i} cols={getCols(i)}>
             <div
-              className="gif"
+              className='gif'
               id={String(i)}
               style={{
                 backgroundImage: `url(${
@@ -99,9 +102,9 @@ const HobbiesComponent: React.FC<{ setSnackBar: Function }> = props => {
             <GridListTileBar
               title={hobby.name}
               actionIcon={
-                <Tooltip title="Delete">
+                <Tooltip title='Delete'>
                   <IconButton aria-label={`Delete ${hobby.name}`} onClick={() => deleteHobby(i)}>
-                    <i className="inset-icon fas fa-trash" />
+                    <i className='inset-icon fas fa-trash' />
                   </IconButton>
                 </Tooltip>
               }

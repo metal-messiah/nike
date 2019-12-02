@@ -10,6 +10,11 @@ import { Hobby } from '../../models/hobby';
 
 // interfaces
 import { IState } from '../../interfaces/state';
+interface Props {
+  open: boolean;
+  setOpen: Function;
+  setSnackBar: Function;
+}
 
 // enums
 import { ActionType } from '../../enums/action-type';
@@ -21,7 +26,7 @@ import { isValid, isAlphabetic, isNotEmpty } from '../../util/validator';
 // fetch
 import axios from 'axios';
 
-const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: Function }> = props => {
+const FormComponent: React.FC<Props> = props => {
   // redux state
   const { firstName, lastName } = useSelector((state: IState) => state);
   const dispatch = useDispatch();
@@ -105,7 +110,7 @@ const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: F
         // build new hobby object from hobby tag and image url
         const h = new Hobby(hobby, url);
 
-        // update redux names and hobby list
+        // update redux names and hobby list --> consider refactor to one dispatch method
         dispatch({ type: ActionType.ADD_HOBBY, payload: h });
         dispatch({ type: ActionType.UPDATE_FIRST_NAME, payload: localFirstName });
         dispatch({ type: ActionType.UPDATE_LAST_NAME, payload: localLastName });
@@ -129,21 +134,21 @@ const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: F
     <Dialog open={open} fullWidth={true}>
       <DialogTitle>Add Hobby</DialogTitle>
       <DialogContent>
-        <div className='form'>
+        <div className="form">
           <div>
             {!showNameForms && (
-              <div className='name-display'>
+              <div className="name-display">
                 <div>{`${firstName} ${lastName}`}</div>
-                <button className='edit-name' type='button' onClick={() => setShowNameForms(true)}>
-                  <i className='fas fa-pencil-alt' />
+                <button className="edit-name" type="button" onClick={() => setShowNameForms(true)}>
+                  <i className="fas fa-pencil-alt" />
                 </button>
               </div>
             )}
             {showNameForms && (
               <FormControl required={true} fullWidth={true}>
                 <TextField
-                  autoComplete='first name'
-                  label='First Name'
+                  autoComplete="first name"
+                  label="First Name"
                   value={localFirstName}
                   error={isDirty.firstName && !isValid(localFirstName, isNotEmpty, isAlphabetic)}
                   onChange={e => {
@@ -161,8 +166,8 @@ const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: F
             {showNameForms && (
               <FormControl required={true} fullWidth={true}>
                 <TextField
-                  autoComplete='last name'
-                  label='Last Name'
+                  autoComplete="last name"
+                  label="Last Name"
                   value={localLastName}
                   error={isDirty.lastName && !isValid(localLastName, isNotEmpty, isAlphabetic)}
                   onChange={e => {
@@ -179,8 +184,8 @@ const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: F
           <div>
             <FormControl required={true} fullWidth={true}>
               <TextField
-                id='hobby-input'
-                label='Add a Hobby'
+                id="hobby-input"
+                label="Add a Hobby"
                 value={hobby}
                 error={isDirty.hobby && !isValid(hobby, isNotEmpty)}
                 onChange={e => {
@@ -198,20 +203,20 @@ const FormComponent: React.FC<{ open: boolean; setOpen: Function; setSnackBar: F
       <DialogActions>
         <Tooltip title={formIsValid() ? 'Add Hobby To List' : ''}>
           <button
-            type='button'
-            id='add-button'
+            type="button"
+            id="add-button"
             onClick={handleSubmit}
             className={!formIsValid() ? 'disabled' : ''}
             disabled={!formIsValid()}
             onKeyDown={handleKeyDown}
           >
-            {!loading && <i className='fas fa-plus-circle' />}
-            {loading && <i className='fas fa-spinner fa-spin' />}
+            {!loading && <i className="fas fa-plus-circle" />}
+            {loading && <i className="fas fa-spinner fa-spin" />}
           </button>
         </Tooltip>
-        <Tooltip title='Close'>
-          <button id='cancel-button' type='button' onClick={() => setOpen(false)}>
-            {!loading && <i className='fas fa-times-circle' />}
+        <Tooltip title="Close">
+          <button id="cancel-button" type="button" onClick={() => setOpen(false)}>
+            {!loading && <i className="fas fa-times-circle" />}
           </button>
         </Tooltip>
       </DialogActions>
