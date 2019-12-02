@@ -45,6 +45,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "yarn": "^1.21.0"
   }
 }
