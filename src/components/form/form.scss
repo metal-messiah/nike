@@ -1,0 +1,94 @@
+@import '../../assets/styles/colors.scss';
+
+.form {
+  background: $color-honeydew;
+  border-radius: 5px;
+  box-shadow: 0 0 5px $color-old-lavender;
+  color: $color-old-lavender;
+  padding: 10px 25px;
+  max-width: 500px;
+  margin: 0 auto 60px;
+}
+
+.form > div {
+  margin: 10px auto;
+}
+
+.disabled {
+  background: $color-honeydew;
+  color: $color-old-lavender;
+  color: #999;
+}
+
+button {
+  background: $color-cadet-grey;
+  // padding: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-old-lavender;
+  color: $color-honeydew;
+  font-size: large;
+  text-transform: capitalize;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:not(.disabled):hover {
+  cursor: pointer;
+  color: white;
+  // box-shadow: 0 0 2px $color-old-lavender;
+}
+
+.name-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-old-lavender;
+  padding: 5px;
+  color: $color-honeydew;
+  border-radius: 5px 5px 0 0;
+}
+
+.name-display > div {
+  font-size: large;
+  font-weight: bold;
+  flex-grow: 1;
+  padding-left: 5px;
+  text-transform: capitalize;
+}
+
+.edit-name {
+  width: 30px;
+  height: 30px;
+  font-size: small;
+  background-color: transparent;
+  color: $color-honeydew;
+}
+
+#cancel-button {
+  background: transparent;
+  border: none;
+  color: $color-old-lavender;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+}
+
+#add-button {
+  position: absolute;
+  left: 50px;
+  bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px $color-old-lavender;
+}
+
+#add-button:not(.disabled):hover {
+  cursor: pointer;
+  color: white;
+}

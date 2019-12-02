@@ -1,0 +1,65 @@
+@import '../../assets/styles/colors';
+
+.container {
+  background: $color-cadet-grey;
+  padding: 0;
+  border-radius: 5px 5px 0 0;
+
+  position: relative;
+  border: 1px solid $color-old-lavender;
+
+  box-shadow: 0 0 3px black;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.grid-list {
+  width: 100%;
+}
+
+.gif {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.inset-button {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
+.inset-icon {
+  color: $color-honeydew;
+  font-size: small;
+}
+
+.toolbar {
+  background: $color-old-lavender;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0;
+}
+
+.toolbar > .user-name {
+  padding-left: 10px;
+  color: $color-honeydew;
+  font-weight: bold;
+  font-size: large;
+  text-transform: capitalize;
+}
+
+#clear-all {
+  margin: 0;
+  background: transparent;
+  border: none;
+}
+
+.tile {
+  text-transform: capitalize;
+}

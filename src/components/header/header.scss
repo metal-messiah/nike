@@ -1,0 +1,32 @@
+@import '../../assets/styles/colors.scss';
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: $color-standard;
+  text-shadow: 1px 1px 2px black, 2px 2px $color-old-lavender;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-hobby {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-hobby > span {
+  font-size: large;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .add-hobby > span {
+    display: none;
+  }
+}
+
+.add-hobby-button {
+  margin: 0;
+}
